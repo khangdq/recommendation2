@@ -1,0 +1,62 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>55f3626d-2ada-4f10-bea8-e554f93e6b8f</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>app.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>recommendationsystem</Name>
+    <RootNamespace>recommendationsystem</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <InterpreterId>Global|VisualStudio|Python310</InterpreterId>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="app.py" />
+    <Compile Include="apps\content_based_filtering.py" />
+    <Compile Include="apps\project_overview.py" />
+    <Compile Include="apps\collaborative_filtering.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="multiapp.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="apps\" />
+    <Folder Include="apps\__pycache__\" />
+    <Folder Include="data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="apps\__pycache__\data_exploration.cpython-310.pyc" />
+    <Content Include="apps\__pycache__\data_preprocessing.cpython-310.pyc" />
+    <Content Include="apps\__pycache__\model_building.cpython-310.pyc" />
+    <Content Include="apps\__pycache__\model_deployment.cpython-310.pyc" />
+    <Content Include="apps\__pycache__\model_evaluation.cpython-310.pyc" />
+    <Content Include="apps\__pycache__\project_overview.cpython-310.pyc" />
+    <Content Include="data\svd.sav" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|VisualStudio|Python310" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
