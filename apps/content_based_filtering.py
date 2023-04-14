@@ -69,10 +69,10 @@ def display_similar_products(df_filter):
                         cell.image(Image.open(requests.get(image_url, stream=True).raw).resize((150,150)))
                 except:
                     cell.image(Image.open('images/image-not-found-icon.png').resize((150,150)))
-                col1,col2=cell.columns(2)
+                col1,col2=cell.columns([6,4])
                 with col1:
                     try:
-                        st.write(int(product['price']))
+                        st.write("{:,}₫".format(int(product['price'])))
                     except:
                         st.write(" ")
                 with col2:
@@ -110,7 +110,7 @@ def app():
             col3,col4=st.columns(2)
             with col3:
                 try:
-                    st.code("Price: "+str(int(product['price'])))
+                    st.code("Price: " + "{:,}₫".format(int(product['price'])))
                 except:
                     st.code("Price: ")
             with col4:
@@ -118,7 +118,7 @@ def app():
         with st.expander("Description: "):
             st.write(product['description'].values[0])
         with st.expander("Setting"):
-            similar = st.slider('Select the maximum number of products similar to the above that you want the system to recommend (from 1 to 50)', 1, 50, 25)
+            similar = st.slider('Select the maximum number of products similar to the above that you want the system to recommend (from 1 to 50)', 1, 50, 20)
             rating = st.slider('Select the minimum number of ratings similar to the above that you want the system to recommend (from 1 to 10)', 0, 10, 0)
         if st.button('Recomment'):
             df_filter = gensim.iloc[gensim[gensim.product_id==selected_id]['suggestion'].values[0][:similar]]
@@ -134,7 +134,7 @@ def app():
                 display_similar_products(df_filter)
     else:
         with st.expander("Setting"):
-            similar2 = st.slider('Select the maximum number of products similar to the above that you want the system to recommend', 1, 100, 25)
+            similar2 = st.slider('Select the maximum number of products similar to the above that you want the system to recommend', 1, 50, 20)
             rating2 = st.slider('Select the minimum number of ratings similar to the above that you want the system to recommend (from 1 to 10)', 0, 10, 0)
         text = st.text_input('Enter a product name to search:', value='', max_chars=None, key=None, type='default')
         if text != '':
