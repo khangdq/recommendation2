@@ -58,10 +58,10 @@ def display_similar_products(df_filter):
                         cell.image(Image.open(requests.get(image_url, stream=True).raw).resize((150,150)))
                 except:
                     cell.image(Image.open('images/image-not-found-icon.png').resize((150,150)))
-                col1,col2=cell.columns(2)
+                col1,col2=cell.columns([6,4])
                 with col1:
                     try:
-                        st.write(int(product['price']))
+                        st.write("{:,}₫".format(int(product['price'])))
                     except:
                         st.write(" ")
                 with col2:
@@ -84,7 +84,7 @@ def app():
     else:
         st.success(str(data2[data2.user_id==customer_id]['user'].head(1).values[0])+' has successfully logged in') 
     with st.expander("Setting"):
-        similar = st.slider('Select the maximum number of products similar to the above that you want the system to recommend (from 1 to 50)', 1, 25, 25)
+        similar = st.slider('Select the maximum number of products similar to the above that you want the system to recommend (from 1 to 25)', 1, 25, 25)
         rating = st.slider('Select the minimum number of ratings similar to the above that you want the system to recommend (from 1 to 10)', 0, 10, 0)
     
     if st.button('Recomment') and (customer_id in user_id):
