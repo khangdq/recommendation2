@@ -35,7 +35,7 @@ def load_data():
             x=[float(item) for item in x]
         return x
 
-    gensim = pd.read_csv('data/Products_ThoiTrangNam_resultGensim.csv', index_col=0, converters={"suggestion": convert_array_int,"rate_suggestion":convert_array_float})
+    gensim = pd.read_csv('Products_ThoiTrangNam_resultGensim.csv', index_col=0, converters={"suggestion": convert_array_int,"rate_suggestion":convert_array_float})
     #gensim.dropna(inplace=True)
     gensim=gensim.drop(['link','text_clean_stopword'],axis=1)
     gensim.reset_index(drop=True, inplace=True)
