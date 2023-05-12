@@ -1,7 +1,7 @@
-streamlit
-numpy
-pandas
-underthesea
-gensim
-emoji
-regex
+streamlit==1.21.0
+numpy==1.22.4
+pandas==1.4.2
+underthesea==1.3.3
+gensim==4.2.0
+emoji==2.2.0
+regex==2022.7.25
